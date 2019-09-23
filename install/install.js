@@ -77,8 +77,8 @@ process.env['OPENCV4NODEJS_DEFINES'] = defines.join('\n')
 process.env['OPENCV4NODEJS_INCLUDES'] = includes.join('\n')
 process.env['OPENCV4NODEJS_LIBRARIES'] = libs.join('\n')
 
-// const flags = process.env.BINDINGS_DEBUG ? '--jobs max --debug' : '--jobs max'
-const nodegypCmd = 'node-gyp rebuild'
+const flags = process.env.BINDINGS_DEBUG ? '--jobs 1 --debug' : '--jobs 1'
+const nodegypCmd = 'node-gyp rebuild ' + flags;
 log.info('install', `spawning node gyp process: ${nodegypCmd}`)
 const child = child_process.exec(nodegypCmd, {}, function(err, stdout, stderr) {
   const _err = err || stderr
